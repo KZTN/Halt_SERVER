@@ -14,7 +14,7 @@ module.exports = {
       });
   },
   async index(req, res) {
-    await User.find({})
+    await User.find({}).populate("favorites")
       .then((response) => {
         return res.json(response);
       })
@@ -23,7 +23,7 @@ module.exports = {
       });
   },
   async show(req, res) {
-    await User.find({ _id: req.params._id })
+    await User.find({ _id: req.params._id }).populate("favorites")
       .then((response) => {
         return res.json(response);
       })

@@ -23,11 +23,13 @@ const LocationSchema = new mongoose.Schema({
   },
   comments: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+      comment: String,
+      rate: Number,
     },
-    { comment: String },
-    {rate: Number}
   ],
 });
 

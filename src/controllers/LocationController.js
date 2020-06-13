@@ -10,7 +10,7 @@ module.exports = {
       });
   },
   async index(req, res) {
-    await Location.find({})
+    await Location.find({}).populate('comments.author')
       .then((response) => {
         return res.json(response);
       })
