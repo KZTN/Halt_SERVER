@@ -31,4 +31,22 @@ module.exports = {
         return res.json(error);
       });
   },
+  async update(req, res) {
+    const user = await User.find({ _id: req.params._id })
+    if(user) {
+      if(req.body.thumbnail) {
+        await User.update({ _id: req.params._id }, {thumbnail: req.body.thumbnail})
+      }
+      if(req.body.name) {
+        await User.update({ _id: req.params._id }, {name: req.body.name})
+      }
+      if(req.body.phone) {
+        await User.update({ _id: req.params._id }, {phone: req.body.phone})
+      }
+      if(req.body.password) {
+        await User.update({ _id: req.params._id }, {password: req.body.password})
+      }
+      return res.json({msg: "ok"});
+    }
+  },
 };
